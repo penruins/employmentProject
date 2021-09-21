@@ -1,6 +1,20 @@
 <template>
   <div id="app">
-    <h1 style="font-size: 50px">社区综合服务信息系统</h1>
+    <el-row >
+      <el-col :span="8">
+        <h2 style="font-size: 30px">招聘网站</h2>
+      </el-col>
+      <el-col :span="13" style="padding-top: 30px">
+        <div>
+          <el-input v-model="input" placeholder="请输入搜索内容"></el-input>
+        </div>
+      </el-col>
+      <el-col :span="3" style="padding-top: 30px">
+        <div>
+          <el-button type="primary">搜索</el-button>
+        </div>
+      </el-col>
+    </el-row>
 
 <!--    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">-->
 <!--      <el-menu-item index="1">处理中心</el-menu-item>-->

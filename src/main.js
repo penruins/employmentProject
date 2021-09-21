@@ -4,6 +4,7 @@ import App from './App.vue'
 import Login from './views/Login.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
+import './plugins/axios'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
