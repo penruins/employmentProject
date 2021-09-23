@@ -8,7 +8,7 @@
               <font size="5px">{{recruitment.jobName}}</font><br>
             </el-col>
             <el-col :span="4">
-              <el-button type="primary" plain>投递简历</el-button>
+              <el-button type="primary" plain @click="addRoutes1">投递简历</el-button>
             </el-col>
           </el-row>
           {{recruitment.company}}
@@ -81,26 +81,6 @@
             }
         },
         methods: {
-            login () {
-                var _this = this
-                // console.log(this.$store.state)
-                // this.$axios
-                //     .post('/api/api/v1/user/login', {
-                //         username: this.loginForm.username,
-                //         password: this.loginForm.password
-                //     })
-                //     .then(successResponse => {
-                //         if (successResponse.data.data.isSuccess) {
-                //             _this.$store.commit('login', _this.loginForm)
-                //             alert('登录成功')
-                //             this.$router.push('/writeArticle')
-                //         }
-                //     })
-                //     .catch(failResponse => {
-                //     })
-                this.$router.push('/app')
-            },
-
           getRecruitment() {
             const _this = this
             axios.get('http://localhost:8080/recruitment/recruitment/'+_this.id,{headers:{}}).then(function(resp) {
@@ -112,6 +92,17 @@
           getParams() {
             this.id = this.$route.query.id
             console.log(this.id);
+          },
+          addRoutes1() {
+            this.$router.push(
+              {
+                path: '/resume',
+                query: {
+                  company: this.recruitment.company,
+                  jobName: this.recruitment.jobName
+                }
+              }
+            )
           }
         },
       created() {

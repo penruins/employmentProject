@@ -1,10 +1,19 @@
 <template>
   <div>
-    用户名:<input type="text" v-model="loginForm.username" placeholder="请输入用户名"/>
-    <br><br>
-    密码： <input type="password" v-model="loginForm.password" placeholder="请输入密码"/>
-    <br><br>
-    <button v-on:click="login">登录</button>
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
+      style="padding-left: 500px; padding-right: 500px; padding-top: 200px">
+      <el-form-item label="账号" >
+        <el-input v-model="loginForm.username"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input type="password" v-model="loginForm.password"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+        <el-button @click="resetForm('ruleForm')">重置</el-button>
+      </el-form-item>
+    </el-form>
+
   </div>
 </template>
 
@@ -40,7 +49,12 @@
                 //     .catch(failResponse => {
                 //     })
                 this.$router.push('/app')
-            }
+            },
+          submitForm() {
+              if((this.loginForm.username == 'admin') && (this.loginForm.password == '123456')) {
+                this.$router.push('/app2')
+              }
+          },
         }
     }
 </script>

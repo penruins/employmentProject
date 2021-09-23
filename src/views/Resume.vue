@@ -1,243 +1,134 @@
 <template>
   <div>
     <el-divider/>
-    <h1>个人简历</h1>
+    <h1>简历投递</h1>
     <el-form :model="dengmiQueryForm" ref="dengmiQueryForm" label-width="130px" class="demo-ruleForm" size="mini"
       style="padding-top: 50px;padding-left: 100px;padding-right: 100px">
       <h2>基本信息</h2>
       <el-row>
-        <el-col span="6">
-          <el-form-item label="姓名">
-            <el-input v-model="dengmiQueryForm.mimian"></el-input>
+        <el-col span="12">
+          <el-form-item label="投递公司">
+            <el-input v-model="company" disabled></el-input>
           </el-form-item>
         </el-col>
-        <el-col span="6">
-          <el-form-item label="电话号码">
-            <el-input v-model="dengmiQueryForm.mimu"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="邮箱">
-            <el-input v-model="dengmiQueryForm.mige"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="出生日期">
-            <el-date-picker type="date" placeholder="选择日期" v-model="dengmiQueryForm.midi"></el-date-picker>
-<!--            <el-input v-model="dengmiQueryForm.midi"></el-input>-->
+        <el-col span="12">
+          <el-form-item label="投递岗位">
+            <el-input v-model="jobName" disabled></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col span="6">
-          <el-form-item label="毕业时间">
-            <el-date-picker type="date" placeholder="选择日期" v-model="dengmiQueryForm.midi"></el-date-picker>
-<!--            <el-input v-model="dengmiQueryForm.zuozhe"></el-input>-->
+          <el-form-item label="姓名">
+            <el-input v-model="resume.name"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col span="6">
+          <el-form-item label="电话号码">
+            <el-input v-model="resume.telephone"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col span="6">
+          <el-form-item label="邮箱">
+            <el-input v-model="resume.email"></el-input>
           </el-form-item>
         </el-col>
         <el-col span="6">
           <el-form-item label="国家/地区">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="籍贯">
-            <el-input v-model="dengmiQueryForm.midi"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="证件类型">
-            <el-input v-model="dengmiQueryForm.zuozhe"></el-input>
+            <el-input v-model="resume.nation"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col span="6">
           <el-form-item label="证件号码">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.cardNumber"></el-input>
           </el-form-item>
         </el-col>
         <el-col span="6">
           <el-form-item label="期望月薪">
-            <el-input v-model="dengmiQueryForm.midi"></el-input>
+            <el-input v-model="resume.expectMonthSalary"></el-input>
           </el-form-item>
         </el-col>
         <el-col span="6">
           <el-form-item label="期望年薪">
-            <el-input v-model="dengmiQueryForm.zuozhe"></el-input>
+            <el-input v-model="resume.expectYearSalary"></el-input>
           </el-form-item>
         </el-col>
         <el-col span="6">
           <el-form-item label="政治面貌">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.politicsPerspective"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-col span="6">
         <el-form-item label="民族">
-          <el-input v-model="dengmiQueryForm.midi"></el-input>
+          <el-input v-model="resume.minzu"></el-input>
         </el-form-item>
       </el-col>
       <el-col span="6">
-        <el-form-item label="资格证书">
-          <el-input v-model="dengmiQueryForm.zuozhe"></el-input>
+        <el-form-item label="QQ">
+          <el-input v-model="resume.qq"></el-input>
         </el-form-item>
       </el-col>
       <el-col span="6">
-        <el-form-item label="爱好特长">
-          <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col span="6">
-        <el-form-item label="紧急联系人姓名">
-          <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+        <el-form-item label="微信">
+          <el-input v-model="resume.wechat"></el-input>
         </el-form-item>
       </el-col>
       <el-row>
       </el-row>
       <el-row>
-        <el-col span="6">
-          <el-form-item label="紧急联系人电话">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="英语等级">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="英语登记成绩">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="QQ">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col span="6">
-          <el-form-item label="微信">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
+        <el-col span="12">
           <el-form-item label="现居住地">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.nowLocation"></el-input>
           </el-form-item>
         </el-col>
-        <el-col span="6">
-          <el-form-item label="意向工作地">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
+        <el-col span="12">
           <el-form-item label="邮寄地址">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.mailLocation"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
-        <el-col span="6">
-          <el-form-item label="是否接受海外工作">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="6">
-          <el-form-item label="招聘信息来源">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
       </el-row>
       <el-divider/>
       <h2>教育背景</h2>
       <el-row>
         <el-col span="8">
           <el-form-item label="学校名称">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="8">
-          <el-form-item label="学校所在地">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="8">
-          <el-form-item label="学号">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.school"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col span="8">
-          <el-form-item label="专业排名">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="8">
           <el-form-item label="院系名称">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.schoolCampusName"></el-input>
           </el-form-item>
         </el-col>
         <el-col span="8">
           <el-form-item label="专业名称">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.schoolCareerName"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col span="8">
-          <el-form-item label="学历">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="8">
           <el-form-item label="学习形式">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.learningKind"></el-input>
           </el-form-item>
         </el-col>
         <el-col span="8">
           <el-form-item label="学位">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
+            <el-input v-model="resume.educationBackground"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col span="8">
-          <el-form-item label="研究方向">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="8">
-          <el-form-item label="实验室">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="8">
-          <el-form-item label="研究方向">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col span="8">
-          <el-form-item label="论文发表等级">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col span="8">
-          <el-form-item label="导师">
-            <el-input v-model="dengmiQueryForm.midiLength"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-
       <el-divider/>
-      <h2>实践活动</h2>
-      <el-form-item label="实践活动" prop="desc">
-        <el-input type="textarea" v-model="dengmiQueryForm.midiLength"></el-input>
+      <h2>能力描述</h2>
+      <el-form-item label="能力描述" prop="desc">
+        <el-input type="textarea" v-model="resume.description"></el-input>
       </el-form-item>
       <el-row>
         <el-col>
@@ -261,34 +152,57 @@
                 },
                 responseResult: [],
               id: '',
+              company: '',
+              jobName: '',
               recruitment: [],
-              dengmiQueryForm: {
-                mimian:'',
-                mimu:'',
-                mige:'',
-                midi:'',
-                zuozhe:'',
-                midiLength:''
+              resume: {
+                name: '',
+                telephone: '',
+                qq: '',
+                wechat: '',
+                email: '',
+                cardNumber: '',
+                nation:'',
+                minzu: '',
+                politicsPerspective: '',
+                expectMonthSalary: '',
+                expectYearSalary:'',
+                expectWorkLocation:'',
+                birthday:'',
+                graduateDate:'',
+                nowLocation:'',
+                mailLocation:'',
+                school:'',
+                schoolCampusName:'',
+                schoolCareerName:'',
+                educationBackground:'',
+                learningKind:'',
+                description:''
               }
             }
         },
         methods: {
-          getRecruitment() {
+          submitForm() {
+
+          },
+          getResume() {
             const _this = this
-            axios.get('http://localhost:8080/recruitment/recruitment/'+_this.id,{headers:{}}).then(function(resp) {
+            axios.get('http://localhost:8080/resume/recruitment/'+_this.id,{headers:{}}).then(function(resp) {
               console.log(resp)
               _this.recruitment = resp.data.data
               console.log(_this.recruitment)
             })
           },
           getParams() {
-            this.id = this.$route.query.id
-            console.log(this.id);
+            this.company = this.$route.query.company
+            this.jobName = this.$route.query.jobName
+            console.log(this.company);
+            console.log(this.jobName);
           }
         },
       created() {
         this.getParams()
-        this.getRecruitment()
+        // this.getRecruitment()
       },
     }
 </script>

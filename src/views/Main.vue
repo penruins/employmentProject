@@ -4,20 +4,19 @@
       <el-col :span="8">
         <div>
           <h1>语言分类</h1>
-          <el-button style="padding: 10px">英语</el-button>
-          <el-button style="padding: 10px">日语</el-button>
-          <el-button style="padding: 10px">法语</el-button>
-          <el-button style="padding: 10px">俄语</el-button>
+          <el-button style="padding: 10px" @click="languageRoute">缅甸语</el-button>
+          <el-button style="padding: 10px" @click="languageRoute">越南语</el-button>
+          <el-button style="padding: 10px" @click="languageRoute">泰语</el-button>
+          <el-button style="padding: 10px" @click="languageRoute">印地语</el-button>
           <div style="padding: 3px"></div>
-          <el-button style="padding: 10px">韩语</el-button>
-          <el-button style="padding: 10px">葡语</el-button>
-          <el-button style="padding: 10px">西语</el-button>
-          <el-button style="padding: 10px">德语</el-button>
+          <el-button style="padding: 10px" @click="languageRoute">增加罗语</el-button>
+          <el-button style="padding: 10px" @click="languageRoute">马来语</el-button>
+          <el-button style="padding: 10px" @click="languageRoute">孟加拉语</el-button>
           <div style="padding: 3px"></div>
-          <el-button style="padding: 10px">泰语</el-button>
-          <el-button style="padding: 10px">越语</el-button>
-          <el-button style="padding: 10px">印尼语</el-button>
-          <el-button style="padding: 10px">德语</el-button>
+<!--          <el-button style="padding: 10px">泰语</el-button>-->
+<!--          <el-button style="padding: 10px">越语</el-button>-->
+<!--          <el-button style="padding: 10px">印尼语</el-button>-->
+<!--          <el-button style="padding: 10px">德语</el-button>-->
           <div style="padding: 3px"></div>
           <div style="padding: 6px"></div>
           <el-image
@@ -41,15 +40,15 @@
           <el-tabs @tab-click="handleClick" active-name="first">
             <el-tab-pane label="急聘职位" name="first">
               <el-table
-                :data="tableData"
+                :data="tableData2"
                 stripe
                 style="width: 100%">
                 <el-table-column
-                  prop="information"
+                  prop="company"
                   label=""
                   show-overflow-tooltip>
                   <template slot-scope="scope">
-                    <a :href="scope.row.url" target="_blank" class="buttonText">{{scope.row.information}}</a>
+                    <a :href="getUrl(scope.row.id)" target="_blank" class="buttonText">{{scope.row.company}}</a>
                   </template>
                 </el-table-column>
                 <el-table-column
@@ -57,7 +56,7 @@
                   label=""
                   show-overflow-tooltip>
                   <template slot-scope="scope">
-                    <a :href="scope.row.url" target="_blank" class="buttonText">{{scope.row.information}}</a>
+                    <a :href="scope.row.url" target="_blank" class="buttonText">{{scope.row.jobName}}</a>
                   </template>
                 </el-table-column>
               </el-table>
@@ -206,16 +205,21 @@
       page(currentPage) {
         const _this = this
         axios.get('http://localhost:8080/recruitment/recruitments/'+currentPage+'/10',{headers:{}}).then(function(resp) {
-          console.log(resp)
           _this.tableData2 = resp.data.data.records
           _this.total = resp.data.data.total
+          console.log(_this.tableData2)
           _this.size = resp.data.data.size
         })
-      }
+      },
+      getUrl(id) {
+        return '/content?id=' + id;
+      },
+      languageRoute() {
+          this.$router.push('/recruitmentList2')
+      },
     },
     created() {
       this.page(1)
-      console.log(this.tableData2)
     },
   }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <el-row >
+    <el-row v-if="$route.meta.keepAlive">
       <el-col :span="8">
-        <h2 style="font-size: 30px">招聘网站</h2>
+        <h2 style="font-size: 30px" @click="returnToMainPage">招聘网站</h2>
       </el-col>
       <el-col :span="13" style="padding-top: 30px">
         <div>
@@ -39,29 +39,40 @@
 <!--      <router-link to="/">Home</router-link> |-->
 <!--      <router-link to="/about">About</router-link>-->
 <!--    </div>-->
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
+<script>
+
+  export default {
+    methods: {
+      returnToMainPage() {
+        this.$router.push('/')
+      }
+    }
+  }
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 
-#nav {
-  padding: 30px;
-}
+  #nav {
+    padding: 30px;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
 
-#nav a.router-link-exact-active {
+  #nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>

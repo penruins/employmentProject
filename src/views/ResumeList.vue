@@ -1,31 +1,31 @@
 <template>
   <div>
 
-    <h2>招聘信息管理</h2>
+    <h2>简历管理</h2>
     <el-table
       :data="tableData2"
       border
       style="width: 100%">
       <el-table-column
-        fixed prop="id" label="招聘信息id" width="100">
+        fixed prop="id" label="简历id" width="100">
       </el-table-column>
       <el-table-column
-        fixed prop="company" label="公司名称" width="270">
+        fixed prop="name" label="姓名" width="100">
       </el-table-column>
       <el-table-column
-        fixed prop="jobName" label="职位名称" width="150">
+        fixed prop="telephone" label="手机联系方式" width="150">
       </el-table-column>
       <el-table-column
-        fixed prop="count" label="职位数量" width="100">
+        fixed prop="nowLocation" label="现在居住地" width="250">
       </el-table-column>
       <el-table-column
-        fixed prop="salary" label="薪资" width="150">
+        fixed prop="company" label="投递公司" width="150">
+      </el-table-column>
+      <el-table-column
+        fixed prop="jobName" label="投递岗位" width="150">
       </el-table-column>
       <el-table-column
         fixed prop="educationBackground" label="学历" width="150">
-      </el-table-column>
-      <el-table-column
-        fixed prop="jobType" label="工作类型" width="120">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -42,7 +42,7 @@
 <!--          </el-button><br>-->
           <el-button
             @click="addRoutes1(scope.row.id)" type="primary" size="small">
-            修改
+            详细信息
           </el-button>
           <el-button
             @click="deleteUser(scope.row)" type="danger" size="small">
@@ -66,7 +66,7 @@
     methods: {
       page(currentPage) {
         const _this = this
-        axios.get('http://localhost:8080/recruitment/recruitments/'+currentPage+'/10',{headers:{}}).then(function(resp) {
+        axios.get('http://localhost:8080/resume/resumes2/'+currentPage+'/10',{headers:{}}).then(function(resp) {
           console.log(resp)
           _this.tableData2 = resp.data.data.records
           _this.total = resp.data.data.total
@@ -76,7 +76,7 @@
       addRoutes1(id) {
         this.$router.push(
           {
-            path: '/contentUpdate',
+            path: '/resumeDisplay',
             query: {
               id: id
             }
